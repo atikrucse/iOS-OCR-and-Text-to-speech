@@ -15,39 +15,30 @@ class SecondViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    @IBAction func backButtonAction(_ sender: Any) {
+    func hapticFeedBack(){
+        // Haptic FeedBack
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         
         let generator2 = UIImpactFeedbackGenerator(style: .medium)
         generator2.impactOccurred()
         // Haptic FeedBack End
-        
+    }
+
+    @IBAction func backButtonAction(_ sender: Any) {
+        hapticFeedBack()
         self.dismiss(animated: true, completion: nil)
     }
     
 
     @IBAction func skipButtonAction(_ sender: Any) {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
-        
-        let generator2 = UIImpactFeedbackGenerator(style: .medium)
-        generator2.impactOccurred()
-        // Haptic FeedBack End
-        
+        hapticFeedBack()
         performSegue(withIdentifier: "nextFour", sender: nil)
     }
     
     
     @IBAction func nextButtonAction(_ sender: Any) {
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
-        
-        let generator2 = UIImpactFeedbackGenerator(style: .medium)
-        generator2.impactOccurred()
-        // Haptic FeedBack End
-        
+        hapticFeedBack()
         performSegue(withIdentifier: "nextTwo", sender: nil)
     }
 }

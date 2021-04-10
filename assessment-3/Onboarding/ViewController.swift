@@ -14,7 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func skipAction(_ sender: Any) {
+    func hapticFeedBack(){
         // Haptic FeedBack
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
@@ -22,20 +22,16 @@ class ViewController: UIViewController {
         let generator2 = UIImpactFeedbackGenerator(style: .medium)
         generator2.impactOccurred()
         // Haptic FeedBack End
-        
+    }
+    
+    @IBAction func skipAction(_ sender: Any) {
+        hapticFeedBack()
         performSegue(withIdentifier: "nextFifth", sender: nil)
     }
     
     
     @IBAction func nextAction(_ sender: Any) {
-        // Haptic FeedBack
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
-        
-        let generator2 = UIImpactFeedbackGenerator(style: .medium)
-        generator2.impactOccurred()
-        // Haptic FeedBack End
-        
+        hapticFeedBack()
         performSegue(withIdentifier: "nexOne", sender: nil)
     }
     

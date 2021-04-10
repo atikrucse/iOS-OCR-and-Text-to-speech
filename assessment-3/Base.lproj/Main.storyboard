@@ -56,7 +56,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ex totam praesentium incidunt aut." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Og0-eH-13J">
-                                <rect key="frame" x="45.5" y="721" width="221" height="16.5"/>
+                                <rect key="frame" x="45.5" y="721" width="219" height="16.5"/>
                                 <fontDescription key="fontDescription" name="Raleway-Light" family="Raleway" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -263,7 +263,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ex totam praesentium incidunt aut." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bao-hA-y4l">
-                                <rect key="frame" x="44.5" y="171" width="221" height="21"/>
+                                <rect key="frame" x="44.5" y="171" width="219" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="fMO-NY-wzH"/>
                                 </constraints>
@@ -679,7 +679,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are listening your text" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fwF-Fu-DRC">
-                            <rect key="frame" x="80" y="23" width="161.5" height="16.5"/>
+                            <rect key="frame" x="73.5" y="23" width="174" height="16.5"/>
                             <fontDescription key="fontDescription" name="Raleway-Bold" family="Raleway" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -705,7 +705,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="AEo-FS-9gK"/>
+        <segue reference="ciB-kB-0BT"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Group 1" width="375" height="465"/>

@@ -38,7 +38,18 @@ class SelectPhotoVC: UIViewController, UINavigationControllerDelegate, UIImagePi
         }
     }
     
+    func hapticFeedBack(){
+        // Haptic FeedBack
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
+        
+        let generator2 = UIImpactFeedbackGenerator(style: .medium)
+        generator2.impactOccurred()
+        // Haptic FeedBack End
+    }
+    
     @IBAction func selectAction(_ sender: Any) {
+        hapticFeedBack()
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum
