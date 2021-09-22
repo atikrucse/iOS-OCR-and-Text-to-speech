@@ -32,7 +32,7 @@ class ConvertedTextVC: UIViewController {
     }
     
     @IBAction func downloadPdf(_ sender: Any) {
-        let activityViewController = UIActivityViewController(activityItems: ["PDF Olarak Kaydet", PDFCreator().prepareData(text: converted)], applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: ["Save as PDF", PDFCreator().prepareData(text: converted)], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
     }
     
