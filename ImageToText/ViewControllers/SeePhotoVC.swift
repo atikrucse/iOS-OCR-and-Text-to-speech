@@ -1,9 +1,3 @@
-//
-//  SeePhotoVC.swift
-//  assessment-3
-//
-//  Created by Orhan Erbas on 9.04.2021.
-//
 
 import UIKit
 import Vision
@@ -30,16 +24,7 @@ class SeePhotoVC: UIViewController {
         recognizeText(Image: imageView.image!)
     }
     
-    func hapticFeedBack(){
-        // Haptic FeedBack
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
-        
-        let generator2 = UIImpactFeedbackGenerator(style: .medium)
-        generator2.impactOccurred()
-        // Haptic FeedBack End
-    }
-    
+   
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "textToSpeechVC" {
             let vc = segue.destination as! ConvertedTextVC
@@ -48,9 +33,14 @@ class SeePhotoVC: UIViewController {
     }
 
     @IBAction func toTextButtonAction(_ sender: Any) {
-        hapticFeedBack()
+        
         performSegue(withIdentifier: "textToSpeechVC", sender: nil)
     }
+    
+    @IBAction func backButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     func recognizeText(Image : UIImage) {
        guard let cgImage = Image.cgImage else {

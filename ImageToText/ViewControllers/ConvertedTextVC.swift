@@ -1,9 +1,3 @@
-//
-//  ConvertedTextVC.swift
-//  assessment-3
-//
-//  Created by Orhan Erbas on 9.04.2021.
-//
 
 import UIKit
 import AVFoundation
@@ -30,6 +24,11 @@ class ConvertedTextVC: UIViewController {
         opaqueView.bounds = self.view.bounds
         
     }
+    
+    @IBAction func backButtonPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     @IBAction func downloadPdf(_ sender: Any) {
         let activityViewController = UIActivityViewController(activityItems: ["Save as PDF", PDFCreator().prepareData(text: converted)], applicationActivities: nil)
@@ -65,8 +64,6 @@ class ConvertedTextVC: UIViewController {
     
     func animateOut(popupView: UIView) {
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: [], animations: {
-        //use if you wish to darken the background
-          //self.viewDim.alpha = 0
            popupView.transform = CGAffineTransform(scaleX: 0.0, y: 0.0)
         }) { (success) in
            popupView.removeFromSuperview()
@@ -74,17 +71,11 @@ class ConvertedTextVC: UIViewController {
         self.speechButton.isHidden = false
     }
     
+    //Method for text to speech
     func speechIn(text: String) {
-        // Haptic FeedBack
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
-        
-        let generator2 = UIImpactFeedbackGenerator(style: .medium)
-        generator2.impactOccurred()
-        // Haptic FeedBack End
    
         let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = AVSpeechSynthesisVoice(language: "tr-TR")
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
 
         synth.speak(utterance)
     }

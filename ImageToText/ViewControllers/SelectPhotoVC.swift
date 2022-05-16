@@ -1,34 +1,15 @@
-//
-//  SelectPhotoVC.swift
-//  assessment-3
-//
-//  Created by Orhan Erbas on 9.04.2021.
-//
 
 import UIKit
 import NVActivityIndicatorView
+import VisionKit
 
-class SelectPhotoVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    
-    @IBOutlet weak var firstView: UIView!
-    @IBOutlet weak var secondView: UIView!
+class SelectPhotoVC: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, VNDocumentCameraViewControllerDelegate {
+
     var imagePicker = UIImagePickerController()
     var selected_img = UIImage(named: "")
-    var activityIndicator : NVActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        firstView.layer.cornerRadius = 20
-        secondView.layer.cornerRadius = 20
-        secondView.layer.borderWidth = 5
-        secondView.layer.borderColor = UIColor(red: 0.422, green: 0.422, blue: 0.422, alpha: 1).cgColor
-        let xAxis = self.view.bounds.size.width / 2;
-        let yAxis = self.view.bounds.size.height / 2;
-
-        let frame = CGRect(x: (xAxis), y: (yAxis), width: 45, height: 45)
-        activityIndicator = NVActivityIndicatorView(frame: frame, type: .lineScale, color: .systemPink)
-        self.view.addSubview(activityIndicator)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -38,40 +19,54 @@ class SelectPhotoVC: UIViewController, UINavigationControllerDelegate, UIImagePi
         }
     }
     
-    func hapticFeedBack(){
-        // Haptic FeedBack
-        let generator = UINotificationFeedbackGenerator()
-        generator.notificationOccurred(.success)
-        
-        let generator2 = UIImpactFeedbackGenerator(style: .medium)
-        generator2.impactOccurred()
-        // Haptic FeedBack End
-    }
     
     @IBAction func selectAction(_ sender: Any) {
-        hapticFeedBack()
+        
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum) {
             imagePicker.delegate = self
             imagePicker.sourceType = .savedPhotosAlbum
             imagePicker.allowsEditing = false
-            activityIndicator.startAnimating()
             present(imagePicker, animated: true, completion: nil)
         }
     }
+    
+    //Adding scanner
+    @IBAction func scannerPressed(_ sender: UIButton) {
+        configureDocumentView()
+    }
+    
+    //End scanner
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         self.dismiss(animated: true, completion: nil)
         
         if let image = info[.originalImage] as? UIImage {
             selected_img = image
+            print("Image 444= \(image)")
          }
         performSegue(withIdentifier: "showPhoto", sender: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
-        activityIndicator.stopAnimating()
     }
+    
+    //Function for scanner
+    private func configureDocumentView(){
+        let scanningDocumentVC = VNDocumentCameraViewController()
+        scanningDocumentVC.delegate = self
+        present(scanningDocumentVC, animated: true, completion: nil)
+    }
+    
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        for pageNumber in 0..<scan.pageCount{
+            let image = scan.imageOfPage(at: pageNumber)
+            //print("Image 3333 = \(image)")
+            
+            selected_img = image
+        }
+        controller.dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "showPhoto", sender: nil)
+    }
+    //Scanner function end
 }
-
-
